@@ -1,0 +1,33 @@
+[20-Oct-2020 12:13:49 UTC] ===========  POST  ============== Array
+(
+    [id] => 12345
+    [live_mode] => true
+    [type] => payment
+    [date_created] => 2015-03-25T10:04:58.396-04:00
+    [application_id] => 123123123
+    [user_id] => 44444
+    [version] => 1
+    [api_version] => v1
+    [action] => payment.created
+    [data] => [object Object]
+)
+
+[20-Oct-2020 12:13:49 UTC] ===========  REQUEST  ============== Array
+(
+    [id] => 12345
+    [live_mode] => true
+    [type] => payment
+    [date_created] => 2015-03-25T10:04:58.396-04:00
+    [application_id] => 123123123
+    [user_id] => 44444
+    [version] => 1
+    [api_version] => v1
+    [action] => payment.created
+    [data] => [object Object]
+)
+
+[20-Oct-2020 12:13:49 UTC] {"message":"Payment not found","error":"not_found","status":404,"cause":[{"code":2000,"description":"Payment not found","data":null}]}
+[20-Oct-2020 12:13:49 UTC] PHP Notice:  Trying to get property 'status' of non-object in /home/gqwrpxclfvax/public_html/paranoia-shop/webhook/index.php on line 19
+[20-Oct-2020 12:13:49 UTC] PHP Notice:  Trying to get property 'error' of non-object in /home/gqwrpxclfvax/public_html/paranoia-shop/webhook/index.php on line 20
+[20-Oct-2020 12:13:49 UTC] PHP Notice:  Trying to get property 'error' of non-object in /home/gqwrpxclfvax/public_html/paranoia-shop/webhook/index.php on line 23
+[20-Oct-2020 12:13:49 UTC] PHP Notice:  Trying to get property 'status' of non-object in /home/gqwrpxclfvax/public_html/paranoia-shop/webhook/index.php on line 25

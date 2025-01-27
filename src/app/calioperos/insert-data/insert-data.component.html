@@ -1,0 +1,72 @@
+<section class="px-1 mt-1">
+    <form [formGroup]="CalioperosForm" class="full-form">
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Escriba el nombre" formControlName="nombre" type="text" >
+            @if (nombre?.invalid) {
+                <mat-error>No escribio el nombre...</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Apellido</mat-label>
+            <input matInput placeholder="Escriba el Apellido" formControlName="apellido" type="text" >
+            @if (apellido?.invalid) {
+                <mat-error>No escribio el Apellido...</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Escriba el Email" formControlName="email" type="email" >
+            @if (email?.invalid) {
+                <mat-error>No escribio el Email...</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Celular</mat-label>
+            <input matInput placeholder="Escriba el Celular" formControlName="celular" type="tel" >
+            @if (celular?.invalid) {
+                <mat-error>No escribio el Celular...</mat-error>
+            }
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Fecha de ingreso</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fecha_de_ingreso">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Cuerda</mat-label>
+            <mat-select formControlName="cuerda" name="cuerda">
+                <mat-option value="bajo">Bajo</mat-option>
+                <mat-option value="tenor">Tenor</mat-option>
+                <mat-option value="tenor">Contra Alto</mat-option>
+                <mat-option value="tenor">Metzzo</mat-option>
+                <mat-option value="tenor">Soprano</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Subdivisión de Cuerda</mat-label>
+            <mat-select formControlName="cuerdasub" name="cuerdasub">
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Comentarios</mat-label>
+            <textarea matInput formControlName="comentarios"></textarea>
+        </mat-form-field>
+
+        <div class="d-flex justify-content-end w-100">
+            <button mat-flat-button color="primary">Guardar</button>
+        </div>
+    </form>
+</section>
