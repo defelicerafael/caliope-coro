@@ -11,6 +11,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { Subscription } from 'rxjs';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-audiciones',
@@ -41,6 +43,8 @@ export class AudicionesComponent {
   public datoId:string = "";
   private service = inject(AdminService);
   private location = inject(Location);
+  private _snackBar = inject(MatSnackBar);
+  private route = inject(ActivatedRoute);
  
 
   CalioperosForm = new FormGroup({
@@ -50,7 +54,7 @@ export class AudicionesComponent {
       celular: new FormControl('',[Validators.required, Validators.minLength(9)]),
       coro: new FormControl('',[Validators.required, Validators.minLength(3)]),
       cuerda: new FormControl('',[Validators.required, Validators.minLength(3)]),
-      cuerdasub: new FormControl('',[Validators.required, Validators.minLength(3)]),
+      cuerdasub: new FormControl('',[Validators.required]),
       evaluacion_final: new FormControl('',[Validators.required, Validators.minLength(3)]),
       comentarios: new FormControl(''),
       fecha_de_ingreso: new FormControl('',[Validators.required]),
@@ -98,16 +102,15 @@ export class AudicionesComponent {
     this.location.back();
   }
 
-  buscarAudicion(tabla:string,id:string){
+  buscarAudicion(id:string){
     if(this.modo ==='editar'){
-      this.miSubscription =  this.service.traerIdDelUnaTabla(tabla,id).subscribe(d=>{
-       
+      this.service.traerIdDelUnaTabla('audiciones',id).subscribe((d:any)=>{
           this.CalioperosForm = new FormGroup({
             nombre: new FormControl(d[0].nombre),
             apellido: new FormControl(d[0].apellido),
             email: new FormControl(d[0].email),
             celular: new FormControl(d[0].celular),
-            coro: new FormControl(d[0].pass),
+            coro: new FormControl(d[0].coro),
             cuerda: new FormControl(d[0].cuerda),
             cuerdasub: new FormControl(d[0].cuerdasub),
             evaluacion_final: new FormControl(d[0].evaluacion_final),
@@ -125,5 +128,60 @@ export class AudicionesComponent {
         },()=>{});
     }
   }  
+
+  
+  onSubmit(formulario:any){
+    //console.log(formulario,this.modo,this.tabla);
+    this.spinner = true;
+    if(this.modo==='agregar'){
+       this.service.insertArray(this.tabla,formulario.value).subscribe(respuesta=>{
+          //console.log(respuesta);
+         if(respuesta===0){
+           this.openSnackBar("Hemos ingresado los datos con éxito","Ok");
+           this.spinner = false;
+           this.goBack();
+         }else{
+          //console.log(respuesta);
+           this.openSnackBar("Estamos teniendo un problema:"+respuesta,"Ok");
+           this.spinner = false;
+         }
+       });
+     }else{
+      //this.blogForm.get('boton_url')!.setValue(this.transformString(titulo));
+      this.service.edit(this.tabla,formulario.value,this.datoId,'id').subscribe(respuesta=>{
+        if(respuesta===0){
+          this.openSnackBar("SE HA EDITADO CORRECTAMENTE","Ok");
+          this.spinner = false;
+          this.goBack();
+        }else{
+          this.openSnackBar("Estamos teniendo un problema, intente más tarde...","Ok");
+          this.spinner = false;
+        }
+      })
+    }
+  };
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action,{
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 4000,
+    });
+  }
+
+  constructor(){
+    this.route.params.subscribe( (params) => {
+      this.datoId = params['id'];
+      console.log(this.tabla,this.datoId);
+      if(typeof this.datoId !=='undefined'){
+        this.modo='editar';
+        //console.log(this.modo);
+        this.buscarAudicion(this.datoId);
+      }else{
+        this.modo='agregar';
+        //console.log(this.modo);
+      }
+    });
+  }
 
 }

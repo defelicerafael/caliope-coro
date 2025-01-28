@@ -1,11 +1,11 @@
 
 <section class="px-1 mt-1">
     <h1 class="text-center">Audiciones</h1>
-    <form [formGroup]="CalioperosForm" class="full-form">
+    <form [formGroup]="CalioperosForm" class="full-form" (ngSubmit)="onSubmit(CalioperosForm)" ngNativeValidate>
         
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Audiciona para el Coro: </mat-label>
-            <mat-select formControlName="cuerda" name="cuerda">
+            <mat-select formControlName="coro" name="coro">
                 <mat-option value="boutique">Boutique</mat-option>
                 <mat-option value="catedral">Catedral</mat-option>
                 <mat-option value="kids">Kids</mat-option>
@@ -70,6 +70,17 @@
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Armonización: </mat-label>
             <mat-select formControlName="armonizacion" name="armonizacion">
+                <mat-option value="le_falta">le falta</mat-option>
+                <mat-option value="con_lo_justo">Con lo justo</mat-option>
+                <mat-option value="cumple">Cumple</mat-option>
+                <mat-option value="cumple_bien">Cumple bien</mat-option>
+                <mat-option value="sobrado">Sobrado</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Interpretación: </mat-label>
+            <mat-select formControlName="interpretacion" name="interpretacion">
                 <mat-option value="le_falta">le falta</mat-option>
                 <mat-option value="con_lo_justo">Con lo justo</mat-option>
                 <mat-option value="cumple">Cumple</mat-option>

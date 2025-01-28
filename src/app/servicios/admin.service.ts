@@ -80,7 +80,7 @@ export class AdminService {
     return this.http.get<any[]>(url)
     .pipe(
       tap(data=>{
-       console.log(data);
+       //console.log(data);
       }),
       map(resp=>{
         return resp;
