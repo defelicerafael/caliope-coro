@@ -94,3 +94,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .align-items-center{
 	align-items: center;
 }
+
+.text-center{
+	text-align: center;
+}
+.p-1{
+	padding: 1rem;
+}

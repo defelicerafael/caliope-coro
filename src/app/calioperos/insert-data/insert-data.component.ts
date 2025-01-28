@@ -7,8 +7,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { Observable } from 'rxjs';
-import { AdminService } from '../../servicios/admin.service';
+
 import { MatButtonModule } from '@angular/material/button';
+import { AdminService } from '../../servicios/admin.service';
 
 @Component({
   selector: 'app-insert-data',

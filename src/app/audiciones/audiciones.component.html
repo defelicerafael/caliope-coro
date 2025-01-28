@@ -1,5 +1,21 @@
+
 <section class="px-1 mt-1">
+    <h1 class="text-center">Audiciones</h1>
     <form [formGroup]="CalioperosForm" class="full-form">
+        
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Audiciona para el Coro: </mat-label>
+            <mat-select formControlName="cuerda" name="cuerda">
+                <mat-option value="boutique">Boutique</mat-option>
+                <mat-option value="catedral">Catedral</mat-option>
+                <mat-option value="kids">Kids</mat-option>
+                <mat-option value="play">Play</mat-option>
+                <mat-option value="roots capital">Roots Capital</mat-option>
+                <mat-option value="roots pilar">Roots Pilar</mat-option>
+                <mat-option value="tigre">Tigre</mat-option>
+            </mat-select>
+        </mat-form-field>
+
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Nombre</mat-label>
             <input matInput placeholder="Escriba el nombre" formControlName="nombre" type="text" >
@@ -41,7 +57,42 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Cuerda</mat-label>
+            <mat-label>Vocalización: </mat-label>
+            <mat-select formControlName="vocalizacion" name="vocalizacion">
+                <mat-option value="le_falta">Le falta</mat-option>
+                <mat-option value="con_lo_justo">Con lo justo</mat-option>
+                <mat-option value="cumple">Cumple</mat-option>
+                <mat-option value="cumple_bien">Cumple bien</mat-option>
+                <mat-option value="sobrado">Sobrado</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Armonización: </mat-label>
+            <mat-select formControlName="armonizacion" name="armonizacion">
+                <mat-option value="le_falta">le falta</mat-option>
+                <mat-option value="con_lo_justo">Con lo justo</mat-option>
+                <mat-option value="cumple">Cumple</mat-option>
+                <mat-option value="cumple_bien">Cumple bien</mat-option>
+                <mat-option value="sobrado">Sobrado</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Onda Caliopera: </mat-label>
+            <mat-select formControlName="onda" name="onda">
+                <mat-option value="le_falta">le falta</mat-option>
+                <mat-option value="con_lo_justo">Con lo justo</mat-option>
+                <mat-option value="cumple">Cumple</mat-option>
+                <mat-option value="cumple_bien">Cumple bien</mat-option>
+                <mat-option value="sobrado">Sobrado</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Posible Cuerda</mat-label>
             <mat-select formControlName="cuerda" name="cuerda">
                 <mat-option value="bajo">Bajo</mat-option>
                 <mat-option value="tenor">Tenor</mat-option>
@@ -58,13 +109,36 @@
                 <mat-option value="2">2</mat-option>
             </mat-select>
         </mat-form-field>
-        
+    
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Evaluación final: </mat-label>
+            <mat-select formControlName="evaluacion_final" name="evaluacion_final">
+                <mat-option value="le_falta">Le falta</mat-option>
+                <mat-option value="con_lo_justo">Con lo justo</mat-option>
+                <mat-option value="cumple">Cumple</mat-option>
+                <mat-option value="cumple_bien">Cumple bien</mat-option>
+                <mat-option value="sobrado">Sobrado</mat-option>
+            </mat-select>
+        </mat-form-field>
 
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Comentarios</mat-label>
             <textarea matInput formControlName="comentarios"></textarea>
         </mat-form-field>
-
+        
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Puede funcionar para el Coro: </mat-label>
+            <mat-select formControlName="traslado" name="traslado">
+                <mat-option value="boutique">Boutique</mat-option>
+                <mat-option value="catedral">Catedral</mat-option>
+                <mat-option value="kids">Kids</mat-option>
+                <mat-option value="play">Play</mat-option>
+                <mat-option value="roots capital">Roots Capital</mat-option>
+                <mat-option value="roots pilar">Roots Pilar</mat-option>
+                <mat-option value="tigre">Tigre</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
         <div class="d-flex justify-content-end w-100">
             <button mat-flat-button color="primary">Guardar</button>
         </div>
