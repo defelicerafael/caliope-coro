@@ -1,4 +1,4 @@
-name: 🚀 Deploy a FTP
+name: 🚀 Deploy a SFTP
 
 on:
   push:
@@ -22,11 +22,12 @@ jobs:
             exit 1
           fi
 
-      - name: 🔄 Subir archivos al FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: 🔄 Subir archivos a SFTP
+        uses: appleboy/scp-action@v0.1.4
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/caliope-app/browser/  # Subimos el build generado en local
-          server-dir: /public_html/  # Ajusta según tu servidor FTP
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: 22  # Cambia si tu servidor usa otro puerto
+          source: "dist/caliope-app/browser/*"
+          target: "/public_html/"  # Ajusta según la estructura de tu servidor
