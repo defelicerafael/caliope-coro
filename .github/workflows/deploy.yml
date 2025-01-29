@@ -3,7 +3,7 @@ name: 🚀 Deploy a FTP
 on:
   push:
     branches:
-      - main  # Cambia esto si quieres que se ejecute en otra rama
+      - main  # Cambia si es necesario
 
 jobs:
   deploy:
@@ -13,11 +13,20 @@ jobs:
       - name: 📂 Clonar el repositorio
         uses: actions/checkout@v4
 
+      - name: 📂 Verificar que la carpeta dist/ exista
+        run: |
+          if [ -d "dist/caliope-app/browser" ]; then
+            echo "✅ La carpeta dist/ existe, procediendo al deploy"
+          else
+            echo "❌ ERROR: La carpeta dist/ no existe, revisa tu push"
+            exit 1
+          fi
+
       - name: 🔄 Subir archivos al FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: /dist/caliope-app/browser/  # Directorio local que se subirá (puedes cambiarlo)
-          server-dir: /public_html/  # Directorio remoto en el FTP (ajústalo según tu estructura)
+          local-dir: dist/caliope-app/browser/  # Subimos el build generado en local
+          server-dir: /public_html/  # Ajusta según tu servidor FTP
