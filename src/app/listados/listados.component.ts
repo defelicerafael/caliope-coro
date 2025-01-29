@@ -37,7 +37,7 @@ export class ListadosComponent {
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   
   public dataSource = new MatTableDataSource<any>();
-  public displayedColumns: any[] = ["id","nombre","apellido","email","celular","evaluacion_final","edit","erase"];
+  public displayedColumns: any[] = ["edit","id","nombre","apellido","email","celular","evaluacion_final","coro","erase"];
   public tabla:string = "";
   private destroyRef = inject(DestroyRef);
   //public tablaEdit: string[] = ["id","nombre","apellido","email","celular",,"evaluacion_final","edit","erase"];

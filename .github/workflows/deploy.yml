@@ -19,5 +19,5 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/  # Directorio local que se subirá (puedes cambiarlo)
+          local-dir: ../dist/  # Directorio local que se subirá (puedes cambiarlo)
           server-dir: /public_html/  # Directorio remoto en el FTP (ajústalo según tu estructura)
