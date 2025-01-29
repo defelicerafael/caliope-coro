@@ -1,0 +1,7 @@
+{
+  "routes": [
+    "/audiciones",
+    "/calioperos",
+    "/calioperos/agregar"
+  ]
+}
