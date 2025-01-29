@@ -35,7 +35,7 @@ export class AdminService {
       //console.log(this.servidor);
     }else{
       this.servidor = this.protocol+"//"+this.href+'/server/';
-      //console.log(this.servidor);
+      console.log(this.servidor);
     }
   }
   private handleError(error: HttpErrorResponse) {

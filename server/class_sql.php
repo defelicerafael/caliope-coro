@@ -36,9 +36,9 @@ class Sql
             //echo 'entro a online';
         //ONLINE  
             $this->servername = "localhost";
-            $this->username = "c1431505_laronda";
-            $this->password = "wevi92baZO";
-            $this->dbname = "c1431505_laronda";
+            $this->username = "c2760022_caliope";
+            $this->password = "vivo45foDU";
+            $this->dbname = "c2760022_caliope";
         }
      // Create connection
      $this->connection = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
