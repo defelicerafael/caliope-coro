@@ -3,7 +3,7 @@ name: 🚀 Deploy a FTP
 on:
   push:
     branches:
-      - main  # Cambia esto si quieres que se ejecute en otra rama
+      - main  # Cambia si necesitas otra rama
 
 jobs:
   deploy:
@@ -13,11 +13,25 @@ jobs:
       - name: 📂 Clonar el repositorio
         uses: actions/checkout@v4
 
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 📦 Instalar dependencias
+        run: npm install
+
+      - name: 🏗️ Construir el proyecto
+        run: npm run build --prod  # Cambia según tu framework
+
+      - name: 📂 Verificar si la carpeta se generó
+        run: ls -la dist/caliope-app/browser/ || echo "⚠️ La carpeta no existe"
+
       - name: 🔄 Subir archivos al FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/caliope-app/browser/  # Directorio local que se subirá (puedes cambiarlo)
-          server-dir: /public_html/  # Directorio remoto en el FTP (ajústalo según tu estructura)
+          local-dir: dist/caliope-app/browser/  # Ruta corregida
+          server-dir: /public_html/  # Ajusta según tu servidor FTP
