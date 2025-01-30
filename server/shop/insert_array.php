@@ -2,7 +2,7 @@
 if($_SERVER['HTTP_HOST']==='localhost'){
     header("Access-Control-Allow-Origin: http://localhost:4200");
 }else{
-    header("Access-Control-Allow-Origin: https://espacioanima.com.ar");
+    header("Access-Control-Allow-Origin: http://caliopecoro.com.ar");
 }
 header("Access-Control-Allow-Headers: Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since");
 header('Access-Control-Allow-Methods: GET, POST, PUT');

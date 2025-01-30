@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Verificar si el archivo o directorio solicitado existe
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^.*$ - [NC,L]
+
+# Redirigir todas las rutas que no sean archivos a index.html
+RewriteRule ^(?!.*\.).*$ index.html [NC,L]

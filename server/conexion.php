@@ -4,9 +4,9 @@ $actual_link = $_SERVER['HTTP_HOST'];
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 if($actual_link==='localhost'){
-    $mysqli = new mysqli("localhost", "root", "manjarlo1", "raca");
+    $mysqli = new mysqli("localhost", "root", "", "caliope_tigre");
 }else{
-    $mysqli = new mysqli("localhost", "c1431505_laronda", "wevi92baZO", "c1431505_laronda");
+    $mysqli = new mysqli("localhost", "c2760022_caliope", "vivo45foDU", "c2760022_caliope");
 }
 
 $localhost = "http://$actual_link:4200";

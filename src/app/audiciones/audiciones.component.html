@@ -4,15 +4,21 @@
     <form [formGroup]="CalioperosForm" class="full-form" (ngSubmit)="onSubmit(CalioperosForm)" ngNativeValidate>
         
         <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Profes en la audición: </mat-label>
+            <mat-select formControlName="profes" name="profes" multiple>
+                @for (profes of profes$ | async; track profes) {
+                    <mat-option [value]="profes.nombre">{{profes.nombre}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        
+        
+        <mat-form-field appearance="outline" class="w-100">
             <mat-label>Audiciona para el Coro: </mat-label>
             <mat-select formControlName="coro" name="coro">
-                <mat-option value="boutique">Boutique</mat-option>
-                <mat-option value="catedral">Catedral</mat-option>
-                <mat-option value="kids">Kids</mat-option>
-                <mat-option value="play">Play</mat-option>
-                <mat-option value="roots capital">Roots Capital</mat-option>
-                <mat-option value="roots pilar">Roots Pilar</mat-option>
-                <mat-option value="tigre">Tigre</mat-option>
+                @for (item of sedes$ | async; track item) {
+                    <mat-option [value]="item.nombre">{{item.nombre}}</mat-option>
+                }
             </mat-select>
         </mat-form-field>
 
@@ -140,13 +146,9 @@
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Puede funcionar para el Coro: </mat-label>
             <mat-select formControlName="traslado" name="traslado">
-                <mat-option value="boutique">Boutique</mat-option>
-                <mat-option value="catedral">Catedral</mat-option>
-                <mat-option value="kids">Kids</mat-option>
-                <mat-option value="play">Play</mat-option>
-                <mat-option value="roots capital">Roots Capital</mat-option>
-                <mat-option value="roots pilar">Roots Pilar</mat-option>
-                <mat-option value="tigre">Tigre</mat-option>
+                @for (item of sedes$ | async; track item) {
+                    <mat-option [value]="item.nombre">{{item.nombre}}</mat-option>
+                }
             </mat-select>
         </mat-form-field>
         

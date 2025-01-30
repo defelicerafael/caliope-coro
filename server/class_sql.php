@@ -135,34 +135,42 @@ class Sql
         
         
         
-    public function insert_array($tabla,$array){
+        public function insert_array($tabla, $array) {
             $this->connect();
             $todos = ""; 
             $values = "";
             $sql = "INSERT INTO $tabla (id,";
-        foreach($array as $dato=>$filtrar){
-                        if ($dato === $this->endKey($array)) {
-                            $todos .= "$dato";
-                            $values .= "'$filtrar'";
-                        }else{
-                            $sql .= "$dato,";
-                            $values .= "'$filtrar',";
-                        }
+            
+            foreach ($array as $dato => $filtrar) {
+                // Si el valor es un array, lo convertimos a string (JSON)
+                if (is_array($filtrar)) {
+                    $filtrar = json_encode($filtrar, JSON_UNESCAPED_UNICODE); 
                 }
-        $sql .= $todos;
-        $sql .=") VALUES ('null',";
-        $sql .= $values;
-        $sql .=")";
-        //echo $sql;
-        $result = $this->connection->query($sql);
+                
+                if ($dato === $this->endKey($array)) {
+                    $todos .= "$dato";
+                    $values .= "'" . $this->connection->real_escape_string($filtrar) . "'";
+                } else {
+                    $sql .= "$dato,";
+                    $values .= "'" . $this->connection->real_escape_string($filtrar) . "',";
+                }
+            }
+        
+            $sql .= $todos;
+            $sql .= ") VALUES ('null',";
+            $sql .= $values;
+            $sql .= ")";
+        
+            $result = $this->connection->query($sql);
+        
             if ($result === TRUE) {
-            echo "0";
+                echo "0";
                 $this->connection->close();  
             } else {
-            echo "Error: " . $sql . "<br>" . $this->connection->error;
+                echo "Error: " . $sql . "<br>" . $this->connection->error;
                 $this->connection->close();  
             }
-    }
+        }
 
     public function insert_array_sin_cero($tabla,$array){
         $this->connect();

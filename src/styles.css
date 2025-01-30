@@ -101,3 +101,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .p-1{
 	padding: 1rem;
 }
+.p-3{
+	padding: 2rem;
+}

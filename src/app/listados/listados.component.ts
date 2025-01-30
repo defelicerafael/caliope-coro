@@ -38,7 +38,7 @@ export class ListadosComponent {
   
   public dataSource = new MatTableDataSource<any>();
   public displayedColumns: any[] = ["edit","id","nombre","apellido","email","celular","evaluacion_final","coro","erase"];
-  public tabla:string = "";
+  public tabla:string = "audiciones";
   private destroyRef = inject(DestroyRef);
   //public tablaEdit: string[] = ["id","nombre","apellido","email","celular",,"evaluacion_final","edit","erase"];
   
@@ -61,7 +61,7 @@ export class ListadosComponent {
       this.adminService.borrarPorId(tabla,id)
       .subscribe(d=>{
         if(d===0){
-          this.datos$ = this.adminService.traerIdDelUnaTabla(this.tabla,'0');
+          this.obtenerdatos();
           this.snackBar.open('Se ha borrado correctamente!', 'ok', {
             horizontalPosition: 'center',
             verticalPosition: 'top',
@@ -100,11 +100,10 @@ export class ListadosComponent {
   constructor(
     private snackBar: MatSnackBar
   ){
-    afterNextRender(() => {
       this.datos$ = this.adminService.traerIdDelUnaTabla('audiciones','0');
       this.obtenerdatos();
-    });
   }
+  
   
   
 

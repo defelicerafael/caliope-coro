@@ -292,13 +292,13 @@ export class AdminService {
   }
 
 
-  traerCategorias(id:string){
+  traerProfes(id:string){
     this.loader = true;
-    const url = this.servidor+'shop/traer-categorias.php?id='+id;  // URL to web api
+    const url = this.servidor+'shop/traer-profes.php?id='+id;  // URL to web api
     return this.http.get<any[]>(url)
     .pipe(
       tap(data=>{
-        //console.log(data);
+        console.log(data);
       }),
       map(resp=>{
         return resp;
@@ -309,6 +309,24 @@ export class AdminService {
       catchError(this.handleError),
     );
   }
+  traerSedes(id:string){
+    this.loader = true;
+    const url = this.servidor+'shop/traer-sedes.php?id='+id;  // URL to web api
+    return this.http.get<any[]>(url)
+    .pipe(
+      tap(data=>{
+        console.log(data);
+      }),
+      map(resp=>{
+        return resp;
+      }),
+      debounceTime(500),
+      distinctUntilChanged(),
+      startWith([]),
+      catchError(this.handleError),
+    );
+  }
+
   traerUnicos(tabla:string,columna:string){
     this.loader = true;
     const url = this.servidor+'shop/traer-columna-unique.php?tabla='+tabla+'&columna='+columna;  // URL to web api
