@@ -1,0 +1,17 @@
+.header-listado{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 0rem 2rem;
+    
+}
+.header-listado div:first-child{
+    /*border: solid 1px red;*/
+    margin-top: 0.55rem;
+}
+.pl-2{
+    padding-left: 2rem;
+}
+.px-2{
+    padding: 0rem 2rem;
+}

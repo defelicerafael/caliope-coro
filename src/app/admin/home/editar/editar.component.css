@@ -1,0 +1,28 @@
+.float-end{
+    float: right;
+}
+
+.btn-black{
+    background-color: #222;
+    color: white;
+}
+.w-100{
+    width: 100%;
+}
+.p-2{
+    margin: 1rem;
+    cursor: pointer;
+}
+h3{
+    padding: 1rem;
+}
+legend{
+    text-align: center;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+}
+@media screen and (max-width:764px) {
+    .p-2{
+        margin: 0rem; 
+    }
+}

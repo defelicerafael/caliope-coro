@@ -1,0 +1,20 @@
+<section class="edit-form p-2">
+    <h3 >Quienes Somos</h3>
+    <form [formGroup]="novedadesForm" (ngSubmit)="onSubmit()">
+        @if(mostrarForm()){
+        <div>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Mostrar?</mat-label>
+            <mat-select formControlName="mostrar" id="mostrar">
+              <mat-option value='1'>1</mat-option>
+              <mat-option value='0'>0</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+            <quill-editor formControlName="texto"></quill-editor>
+        </div>
+        <button type="submit" class="p-2 float-end btn-black">EDITAR</button>
+        }
+    </form>
+</section>

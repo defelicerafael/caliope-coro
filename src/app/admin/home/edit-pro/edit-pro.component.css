@@ -1,0 +1,8 @@
+.columns {
+    column-count: 3; /* Número de columnas */
+    column-gap: 20px; /* Espacio entre columnas */
+  }
+  
+  .columns li {
+    list-style-type: none; /* Quitar el estilo de la lista si es necesario */
+  }
